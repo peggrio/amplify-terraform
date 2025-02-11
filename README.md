@@ -13,8 +13,9 @@ For starting backend:
 
 `cd terraform-deployment`
 
-`terraform init`(don't forget to export your aws profile with sufficient permission to run this app)
-
-`terraform fmt`
-`terraform plan`
-`terraform apply`
+```sh
+terraform init #(don't forget to export your aws profile with sufficient permission to run this app)
+terraform fmt
+terraform plan
+terraform apply
+```

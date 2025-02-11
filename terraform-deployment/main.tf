@@ -7,10 +7,10 @@ module "sample-qs" {
 
   # - Amplify App -
   # Connect Amplify to GitHub
-  existing_repo_url              = "https://github.com/peggrio/daily_practice"
+  existing_repo_url              = "https://github.com/peggrio/amplify-terraform"
   lookup_ssm_github_access_token = true                                         // set to true if the resource exists in your AWS Account
   ssm_github_access_token_name   = "github-access-token-amplify-terraform-proj" // name of the parameter in SSM
-  app_name                       = "peizhen-dp"
+  app_name                       = "lpz"
 
 
   cognito_groups = {
@@ -27,7 +27,7 @@ module "sample-qs" {
 
   cognito_users = {
     # Admin Users to create
-    NarutoUzumaki : {
+    PeizhenLiao : {
       username         = "peizhenliao"
       given_name       = "peizhen"
       family_name      = "liao"
@@ -37,7 +37,7 @@ module "sample-qs" {
     },
 
     # Standard Users to create
-    SasukeUchiha : {
+    ChangyuWu : {
       username         = "lucaswu"
       given_name       = "lucas"
       family_name      = "wu"

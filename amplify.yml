@@ -20,9 +20,11 @@ frontend:
         # - echo "VITE_APP_CLIENT_ID=$APP_CLIENT_ID" >> .env
         # - echo "VITE_LANDING_BUCKET=$LANDING_BUCKET_NAME" >> .env
         # - echo "Printing environmental variables to the console to ensure they are correct"
+
         - echo "start setting up env variables"
         - env | grep -e VITE_ >> .env.production
         - cat .env.production
+
         - npm run build
         - echo "✅ Success!"
   artifacts:

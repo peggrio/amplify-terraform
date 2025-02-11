@@ -17,7 +17,8 @@ import { fetchUserAttributes } from 'aws-amplify/auth';
 import { fetchAuthSession } from 'aws-amplify/auth';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { AmplifyConfig } from '../config/amplify-config'; // NO TOUCHY
+import { AmplifyConfig } from '../config/amplify-config';
+// NO TOUCHY
 Amplify.configure(AmplifyConfig);
 
 // - CORE COMPONENTS -
@@ -41,30 +42,30 @@ import '@cloudscape-design/global-styles/index.css';
 const App = ({ signOut, user }) => {
   // State for current signed in user info
   const [userInfo, setUserInfo] = useState({
-      username: '',
-      given_name: '',
-      family_name: '',
-      email: '',
-  })
-  const getCurrentUserInfo = async ()=> {
+    username: '',
+    given_name: '',
+    family_name: '',
+    email: '',
+  });
+  const getCurrentUserInfo = async () => {
     const attributes = await fetchUserAttributes();
     setUserInfo({
       username: attributes.username,
       given_name: attributes.given_name,
       family_name: attributes.family_name,
       email: attributes.email,
-    })
-  }
+    });
+  };
   useEffect(() => {
     getCurrentUserInfo();
-  },[])
+  }, []);
 
   // let { userId } = useParams();
   return (
     <>
-        <TopNavigationHeader userInfo={userInfo}/>
+      <TopNavigationHeader userInfo={userInfo} />
       <Routes>
-        <Route path="/" element={<Dashboard userInfo = {userInfo}  />} />
+        <Route path="/" element={<Dashboard userInfo={userInfo} />} />
         <Route path="/dashboard" element={<Dashboard userInfo={userInfo} />} />
         <Route path="/s3-objects" element={<S3Objects />} />
         <Route path="/s3-objects/:ObjectId" element={<SingleS3Object />} />

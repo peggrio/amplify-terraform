@@ -1,15 +1,31 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // -- AWS AMPLIFY CONFIGURATION PARAMETERS --
-import { Amplify } from 'aws-amplify';
+
+// import { defineAuth, secret } from '@aws-amplify/backend';
 
 // eslint-disable-next-line import/no-unresolved
 // Uncomment this to test env vars
 // console.log('env', import.meta.env);
 // console.log('userpoolid',import.meta.env.VITE_USER_POOL_ID)
+
+// Helper function to get value from env or secret
+// const getConfigValue = (envKey, secretKey) => {
+//   const envValue = import.meta.env[envKey];
+//   if (envValue) {
+//     return envValue;
+//   }
+//   try {
+//     return secret(secretKey);
+//   } catch (error) {
+//     console.warn(`Failed to get value for ${envKey} from environment or secrets`);
+//     return undefined;
+//   }
+// };
+
 const AmplifyConfig = {
   // Existing API
   API: {
-    GraphQL:{
+    GraphQL: {
       endpoint: `${import.meta.env.VITE_GRAPHQL_URL}`,
       region: `${import.meta.env.VITE_REGION}`,
       defaultAuthMode: 'userPool', // No touchy
@@ -39,7 +55,7 @@ const AmplifyConfig = {
         // },
         username: 'true',
         email: 'true', // Optional
-        phone: 'false', // Optional
+        phone: 'true', // Optional
       }
     }
   },
@@ -50,6 +66,38 @@ const AmplifyConfig = {
     },
   },
 };
+
+// const AmplifyConfig = {
+//   API: {
+//     GraphQL: {
+//       endpoint: getConfigValue('VITE_GRAPHQL_URL', 'graphqlUrl'),
+//       region: getConfigValue('VITE_REGION', 'region'),
+//       defaultAuthMode: 'userPool',
+//     }
+//   },
+//   Auth: {
+//     Cognito: {
+//       userPoolClientId: getConfigValue('VITE_APP_CLIENT_ID', 'userPoolClientId'),
+//       userPoolId: getConfigValue('VITE_USER_POOL_ID', 'userPoolId'),
+//       identityPoolId: getConfigValue('VITE_IDENTITY_POOL_ID', 'identityPoolId'),
+//       allowGuestAccess: false,
+//       signUpVerificationMethod: 'code',
+//       loginWith: {
+//         username: true,
+//         email: true,
+//         phone: true,
+//       }
+//     }
+//   },
+//   Storage: {
+//     S3: {
+//       region: getConfigValue('VITE_REGION', 'region'),
+//       bucket: getConfigValue('VITE_LANDING_BUCKET', 'landingBucket'),
+//     },
+//   },
+// };
+
+
 export { AmplifyConfig };
 
 
